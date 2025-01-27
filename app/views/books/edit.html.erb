@@ -1,2 +1,41 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<h1>Edit Book</h1>
+
+<%= form_with model: @book, url: book_path(@book), method: :patch do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <% @book.errors.full_messages_for(:title).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+    <% @book.errors.full_messages_for(:author).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, step: :any %>
+    <% @book.errors.full_messages_for(:price).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :published_date %>
+    <%= form.date_select :published_date, start_year: 1900, end_year: Date.today.year %>
+    <% @book.errors.full_messages_for(:published_date).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Home", root_path %>
