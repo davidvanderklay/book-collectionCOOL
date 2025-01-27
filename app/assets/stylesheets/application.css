@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+/* app/assets/stylesheets/application.css */
+body {
+  font-family: sans-serif;
+}
+
+.flash-notice {
+  background-color: #C6E2FF;
+  border: 1px solid #6495ED;
+  padding: 10px;
+  margin-bottom: 20px;
+}
