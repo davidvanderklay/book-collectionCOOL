@@ -1,9 +1,17 @@
 <h1>Add New Book</h1>
 
+<%# No changes needed here %>
+<% if flash.now[:alert] %>
+  <div class="alert"><%= flash.now[:alert] %></div>
+<% end %>
+
 <%= form_with model: @book, url: books_path, method: :post do |form| %>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
+    <% @book.errors.full_messages_for(:title).each do |message| %>
+      <div class="error-message"><%= message %></div>
+    <% end %>
   </div>
 
   <div>

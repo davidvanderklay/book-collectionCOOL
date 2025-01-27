@@ -9,10 +9,13 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+
     if @book.save
       flash[:notice] = 'Book added successfully!'
       redirect_to root_path
     else
+      # Handle validation
+      flash.now[:alert] = 'Error creating book. Please check the form.'
       render :new
     end
   end
