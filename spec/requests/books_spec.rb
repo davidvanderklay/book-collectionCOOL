@@ -72,7 +72,7 @@ RSpec.describe 'Books', type: :request do
         end.to change(Book, :count).by(0)
 
         expect(response).to render_template(:new)
-        expect(response.body).to include('Price must be provided')
+        expect(response.body).to include('Published date must be provided')
       end
     end
   end
