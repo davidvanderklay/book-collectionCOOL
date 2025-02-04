@@ -18,12 +18,13 @@
         <td>
           <%= link_to "Show", book_path(book) %>
           <%= link_to "Edit", edit_book_path(book) %>
-          <%= link_to "Delete",
-          book_path(book),
-          data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?",
-          } %>
+          <%= form_with url: book_path(book), method: :delete, local: true do %>
+            <%= button_tag "Delete",
+            type: :submit,
+            onclick: "return confirm('Are you sure?')",
+            style:
+              "background: none; border: none; padding: 0; color: blue; text-decoration: underline; cursor: pointer;" %>
+          <% end %>
         </td>
       </tr>
     <% end %>
